@@ -24,20 +24,21 @@
   document.addEventListener('click',(e)=>{const target=e.target.closest('[data-goal]');if(!target)return;const goal=target.dataset.goal;if(goal&&typeof window.ym==='function'){try{window.ym(window.YM_COUNTER_ID||0,'reachGoal',goal);}catch(err){}}});
 })();
 document.addEventListener("DOMContentLoaded", function () {
-  const cookieMini = document.querySelector("#cookieMini");
+  const cookieNotice = document.querySelector("#cookieNotice");
+  const cookieAccept = document.querySelector("#cookieAccept");
 
-  if (!cookieMini) {
+  if (!cookieNotice || !cookieAccept) {
     return;
   }
 
   const isCookieAccepted = localStorage.getItem("doctorE_cookiesAccepted");
 
   if (!isCookieAccepted) {
-    cookieMini.classList.add("is-visible");
+    cookieNotice.classList.add("is-visible");
   }
 
-  cookieMini.addEventListener("click", function () {
+  cookieAccept.addEventListener("click", function () {
     localStorage.setItem("doctorE_cookiesAccepted", "yes");
-    cookieMini.classList.remove("is-visible");
+    cookieNotice.classList.remove("is-visible");
   });
 });
