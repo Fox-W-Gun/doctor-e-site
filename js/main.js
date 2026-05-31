@@ -24,21 +24,21 @@
   document.addEventListener('click',(e)=>{const target=e.target.closest('[data-goal]');if(!target)return;const goal=target.dataset.goal;if(goal&&typeof window.ym==='function'){try{window.ym(window.YM_COUNTER_ID||0,'reachGoal',goal);}catch(err){}}});
 })();
 document.addEventListener("DOMContentLoaded", function () {
-  const cookieNotice = document.querySelector("#cookieNotice");
+  const cookieBanner = document.querySelector("#cookieBanner");
   const cookieAccept = document.querySelector("#cookieAccept");
 
-  if (!cookieNotice || !cookieAccept) {
+  if (!cookieBanner || !cookieAccept) {
     return;
   }
 
   const isCookieAccepted = localStorage.getItem("doctorE_cookiesAccepted");
 
   if (!isCookieAccepted) {
-    cookieNotice.classList.add("is-visible");
+    cookieBanner.classList.add("is-visible");
   }
 
   cookieAccept.addEventListener("click", function () {
     localStorage.setItem("doctorE_cookiesAccepted", "yes");
-    cookieNotice.classList.remove("is-visible");
+    cookieBanner.classList.remove("is-visible");
   });
 });
