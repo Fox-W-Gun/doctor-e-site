@@ -23,3 +23,21 @@
   if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');io.unobserve(entry.target);}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'));}
   document.addEventListener('click',(e)=>{const target=e.target.closest('[data-goal]');if(!target)return;const goal=target.dataset.goal;if(goal&&typeof window.ym==='function'){try{window.ym(window.YM_COUNTER_ID||0,'reachGoal',goal);}catch(err){}}});
 })();
+document.addEventListener("DOMContentLoaded", function () {
+  const cookieMini = document.querySelector("#cookieMini");
+
+  if (!cookieMini) {
+    return;
+  }
+
+  const isCookieAccepted = localStorage.getItem("doctorE_cookiesAccepted");
+
+  if (!isCookieAccepted) {
+    cookieMini.classList.add("is-visible");
+  }
+
+  cookieMini.addEventListener("click", function () {
+    localStorage.setItem("doctorE_cookiesAccepted", "yes");
+    cookieMini.classList.remove("is-visible");
+  });
+});
